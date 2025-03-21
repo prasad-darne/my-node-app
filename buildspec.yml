@@ -9,11 +9,10 @@ phases:
       - npm config set unsafe-perm true
       - npm config get registry
       - curl -I https://registry.npmjs.org
-      - npm install
+      - npm install --verbos
   build:
     commands:
       - echo "Building the application..."
-      - npm install --verbose
 timeout-in-minutes: 10
   post_build:
     commands:
