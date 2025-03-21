@@ -5,11 +5,16 @@ phases:
     runtime-versions:
       nodejs: 16
     commands:
-      - echo "Installing dependencies..."
+      - echo "Fixing npm permissions..."
+      - npm config set unsafe-perm true
+      - npm config get registry
+      - curl -I https://registry.npmjs.org
       - npm install
   build:
     commands:
       - echo "Building the application..."
+      - npm install --verbose
+timeout-in-minutes: 10
   post_build:
     commands:
       - echo "Build complete. Preparing for deployment..."
