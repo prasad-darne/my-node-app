@@ -1,29 +1,15 @@
 {
-<<<<<<< HEAD
-  "dependencies": {
-    "express": "^4.21.2"
-  },
   "name": "simple-node-app",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
-=======
-  "name": "my-node-app",
-  "version": "1.0.0",
-  "main": "index.js",
->>>>>>> f30a208 (Initial commit)
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-<<<<<<< HEAD
-  "description": ""
-=======
   "description": "",
   "dependencies": {
     "express": "^4.21.2"
   }
->>>>>>> f30a208 (Initial commit)
 }
