@@ -4,6 +4,10 @@ set -e
 # Navigate to the application directory
 cd /home/ec2-user/deploy || exit 1
 
+echo "Installing dependencies..."
+npm install -g pm2  # Install PM2 globally
+npm install
+
 # Start the application using PM2
 echo "Starting the application..."
 pm2 start index.js --name my-node-app

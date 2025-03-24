@@ -18,13 +18,13 @@ echo "Installing PM2..."
 sudo npm install -g pm2
 
 # Navigate to project directory
-cd /home/ec2-user/my-node-app || exit 1
+cd /home/ec2-user/deploy || exit 1
 
 # Install Node.js dependencies
 echo "Installing project dependencies..."
 npm install
 
 # Ensure correct permissions
-sudo chown -R ec2-user:ec2-user /home/ec2-user/my-node-app
+sudo chown -R ec2-user:ec2-user /home/ec2-user/deploy
 
 echo "Setup completed!"
