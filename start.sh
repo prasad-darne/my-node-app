@@ -2,7 +2,7 @@
 set -e
 
 # Navigate to the application directory
-cd /home/ec2-user/my-node-app || exit 1
+cd /home/ec2-user/deploy || exit 1
 
 # Start the application using PM2
 echo "Starting the application..."
