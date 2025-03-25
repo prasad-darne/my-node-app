@@ -2,22 +2,22 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      nodejs: 16
     commands:
-      - echo "Fixing npm permissions..."
-      - npm config set unsafe-perm true
-      - npm config get registry
-      - curl -I https://registry.npmjs.org
-      - npm install --verbos
+      - echo "Installing dependencies..."
+      - sudo yum update -y
+      - sudo yum install -y gcc-c++ make
+      - sudo yum install -y nodejs
+      - npm install -g pm2
+
   build:
     commands:
-      - echo "Building the application..."
+      - echo "Installing application dependencies..."
+      - cd /home/ec2-user/deploy
+      - npm install
+
   post_build:
     commands:
-      - echo "Build complete. Preparing for deployment..."
-
+      - echo "Build completed."
 artifacts:
   files:
     - '**/*'
-  base-directory: .

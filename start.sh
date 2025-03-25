@@ -1,19 +1,27 @@
 #!/bin/bash
 set -e
 
-# Navigate to the application directory
-cd /home/ec2-user/deploy || exit 1
+APP_DIR="/home/ec2-user/deploy"
 
-echo "Installing dependencies..."
-npm install -g pm2  # Install PM2 globally
+echo "Navigating to application directory..."
+cd $APP_DIR
+
+echo "Stopping any existing PM2 process..."
+pm2 stop node-app || true
+
+echo "Installing application dependencies..."
 npm install
 
-# Start the application using PM2
-echo "Starting the application..."
-pm2 start index.js --name my-node-app
+echo "Starting application with PM2..."
+pm2 start index.js --name node-app
 
-# Save PM2 process list to start on reboot
+echo "Saving PM2 process list..."
 pm2 save
+
+echo "Enabling PM2 to start on reboot..."
 pm2 startup systemd
+sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u ec2-user --hp /home/ec2-user
+sudo systemctl enable pm2-ec2-user
+sudo systemctl start pm2-ec2-user
 
 echo "Application started successfully!"
