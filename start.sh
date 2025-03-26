@@ -6,13 +6,6 @@ APP_DIR="/home/ec2-user/deploy"
 echo "Navigating to application directory..."
 cd $APP_DIR
 
-# Manually source NVM
-export NVM_DIR="/home/ec2-user/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-
-# Ensure the correct Node.js version is used
-nvm use --lts
-
 echo "Stopping any existing PM2 process..."
 pm2 stop node-app || true
 
