@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+export PATH=$PATH:/usr/local/bin  # Ensure PM2 is in the path
+
 APP_DIR="/home/ec2-user/deploy"
 
 echo "Navigating to application directory..."
