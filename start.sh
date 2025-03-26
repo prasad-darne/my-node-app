@@ -1,12 +1,15 @@
 #!/bin/bash
 set -e
 
-export PATH=$PATH:/usr/local/bin  # Ensure PM2 is in the path
-
 APP_DIR="/home/ec2-user/deploy"
 
 echo "Navigating to application directory..."
 cd $APP_DIR
+
+# Load NVM and set the correct Node.js version
+export NVM_DIR="/home/ec2-user/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+nvm use --lts
 
 echo "Stopping any existing PM2 process..."
 pm2 stop node-app || true
